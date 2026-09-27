@@ -134,15 +134,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 .room-scroll{position:relative}
 .room-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:#12100c;color:#f4f1eb}
 .room-stage{position:absolute;inset:0}
-.room-stage img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:saturate(.86) contrast(1.02)}
+.room-stage img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.86) contrast(1.02)}
 @keyframes stageDrift{from{transform:scale(1.02)}to{transform:scale(1.09)}}
 @media(prefers-reduced-motion:no-preference){.room-stage img{animation:stageDrift 60s ease-in-out infinite alternate}}
 .room-stage:after{content:"";position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(18,16,12,.5),rgba(18,16,12,.06) 34%,rgba(18,16,12,.9) 88%),
-  linear-gradient(78deg,rgba(18,16,12,.72),rgba(18,16,12,.12) 62%)}
+  linear-gradient(180deg,rgba(18,16,12,.58),rgba(18,16,12,.1) 30%,rgba(18,16,12,.12) 55%,rgba(18,16,12,.92) 90%),
+  linear-gradient(78deg,rgba(18,16,12,.68),rgba(18,16,12,.1) 60%)}
 .room-slide{position:absolute;inset:0;display:flex;align-items:flex-end;z-index:3;opacity:0;pointer-events:none;will-change:transform,opacity}
 .room-copy{width:100%;padding:0 var(--pad) clamp(72px,13svh,120px);max-width:1240px;margin-inline:auto}
-.room-num{position:absolute;right:calc(var(--pad) - .04em);top:8svh;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(120px,30svh,300px);line-height:.8;color:rgba(244,241,235,.14);letter-spacing:-.04em;user-select:none}
+.room-num{position:absolute;right:calc(var(--pad) - .04em);top:7svh;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(112px,26svh,280px);line-height:.8;color:rgba(244,241,235,.22);letter-spacing:-.04em;user-select:none;text-shadow:0 4px 46px rgba(0,0,0,.45)}
 .room-kicker{font-size:10px;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:#cfc8bd}
 .room-title{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,6.4svh,64px);font-weight:500;line-height:1.02;letter-spacing:-.02em;margin:12px 0 14px;color:#fffdf9}
 .room-desc{max-width:44ch;font-size:clamp(13px,1.8svh,15px);line-height:1.75;color:rgba(244,241,235,.82)}
@@ -160,24 +160,19 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 /* flechas */
 .rc-nav{position:absolute;bottom:clamp(20px,4svh,34px);right:var(--pad);z-index:6;width:52px;height:52px;border-radius:50%;border:1px solid rgba(244,241,235,.3);background:rgba(18,16,12,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#f4f1eb;font-size:19px;line-height:1;cursor:pointer;display:none;place-items:center;transition:border-color .3s,background .3s,color .3s}
 .rc-nav:hover{background:#f4f1eb;color:#12100c;border-color:#f4f1eb}
-.rc-prev{right:calc(var(--pad) + 62px)}
+.rc-prev{right:calc(var(--pad) + 60px)}
 @media(hover:hover) and (pointer:fine){.rc-nav{display:grid}}
 /* pista táctil */
+@media(hover:hover) and (pointer:fine){.rc-hint{display:none}}
 .rc-hint{position:absolute;left:50%;bottom:clamp(16px,3svh,26px);transform:translateX(-50%);z-index:6;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:rgba(244,241,235,.6);transition:opacity .5s}
 .room-sticky.show-hint .rc-hint{opacity:1}
 .room-sticky:not(.show-hint) .rc-hint{opacity:0;pointer-events:none}
 .rc-hint:after{content:"";display:block;width:1px;height:26px;margin:9px auto 0;background:linear-gradient(rgba(244,241,235,.7),transparent);animation:hintDrop 1.9s ease-in-out infinite}
 @keyframes hintDrop{0%,100%{transform:scaleY(.35);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
 @media(min-width:901px){
-  .rc-rail{right:auto;left:clamp(14px,2.4vw,34px);align-items:flex-start}
-  .rc-rail button{flex-direction:row-reverse}
   .room-num{right:auto;left:calc(var(--pad) - .04em)}
-  .room-copy{padding-left:clamp(84px,10vw,150px)}
-  .rc-nav{bottom:auto;top:50%;transform:translateY(-50%)}
-  .rc-prev{right:var(--pad);left:auto}
-  .rc-next{right:calc(var(--pad) - 62px);left:auto;transform:translateY(-50%)}
-  .rc-hint{left:auto;right:calc(var(--pad) + 130px);bottom:26px}
-  .rc-hint:after{margin:9px auto 0}
+  .room-copy{padding-left:0}
+  .rc-hint{display:none}
 }
 /* fallback sin JS */
 .room-scroll.static .room-sticky{position:static;height:auto}
