@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11110f">
+<title>La Tesalia Luxury P27 — Una experiencia para compartir</title>
+<meta name="description" content="La Tesalia Luxury P27. Hospedaje privado y pasadía con piscina de doble nivel, jacuzzi y espacios diseñados para compartir.">
+<meta property="og:title" content="La Tesalia Luxury P27">
+<meta property="og:description" content="Hospedaje privado y pasadía con piscina de doble nivel, jacuzzi y espacios diseñados para compartir.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/hero-aerial-1600.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23151512'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23f4f1eb' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-aerial-1600.webp" fetchpriority="high">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#151512; --paper:#f4f1eb; --warm:#e8e0d4; --stone:#8f8779;
+  --line:rgba(21,21,18,.15); --white:#fffdf9; --accent:#7c6048;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --pad:clamp(18px,4vw,28px);
+  --fs-body:clamp(13px,.5vw + 11.5px,15px);
+  --fs-label:clamp(10px,.3vw + 9.4px,11px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+::selection{background:#1b1b18;color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.container{width:min(1240px,100% - var(--pad)*2);margin-inline:auto}
+.eyebrow{font-size:var(--fs-label);letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:700}
+.serif{font-family:"Cormorant Garamond",serif}
+.lede{color:#5e5a53;max-width:52ch;line-height:1.85}
+
+/* ============ HEADER ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-mode:difference;color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;min-height:44px}
+.brand-mark{width:36px;height:36px;flex:none;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-family:"Cormorant Garamond",serif;font-size:18px}
+.brand-text{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.navlinks{display:flex;gap:clamp(16px,2.4vw,30px);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.navlinks a{opacity:.8;padding:12px 0;transition:opacity .3s}
+.navlinks a:hover{opacity:1}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:12px 2px;min-height:44px}
+.mobile-menu{position:fixed;inset:0;z-index:49;background:#11110f;color:#f4f1eb;display:grid;place-content:center;text-align:center;gap:6px;padding:24px}
+.mobile-menu[hidden]{display:none}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,9vw,52px);line-height:1.35;padding:8px 20px}
+.mobile-menu .mm-cta{margin-top:26px;font-family:Manrope;font-size:11px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:16px 28px;align-self:center}
+
+/* ============ HERO ============ */
+.hero{height:100svh;min-height:600px;position:relative;overflow:hidden;background:#111;isolation:isolate}
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 55%;filter:saturate(.92) contrast(1.03)}
+@keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:no-preference){.hero-media img{animation:heroZoom 1.6s var(--ease) both}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.08) 26%,transparent 45%,rgba(0,0,0,.74))}
+.hero-content{position:absolute;z-index:2;left:0;right:0;bottom:clamp(40px,9vh,110px);color:#fff}
+.hero-title{font-size:clamp(64px,11vw,150px);line-height:.78;font-weight:500;letter-spacing:-.055em;margin:16px 0 26px}
+.hero-title span{display:block;font-size:.38em;letter-spacing:.1em;line-height:1.05;text-transform:uppercase;font-family:Manrope;font-weight:500;margin-left:.06em;margin-bottom:.25em}
+.hero-bottom{display:flex;align-items:end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.hero-copy{max-width:480px;font-size:clamp(13px,1vw,14.5px);line-height:1.8;color:rgba(255,255,255,.85)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:14px;border:1px solid rgba(255,255,255,.5);padding:16px 22px;min-height:48px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+.cta:hover{background:#fff;color:#111;border-color:#fff}
+.scroll{position:absolute;bottom:22px;left:50%;z-index:3;transform:translateX(-50%);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;flex-direction:column;gap:9px;align-items:center}
+.scroll i{display:block;width:1px;height:40px;background:rgba(255,255,255,.5);animation:scrollLine 1.8s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+/* ============ INTRO ============ */
+.intro{padding:clamp(70px,10vw,150px) 0}
+.intro-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,7vw,110px);align-items:center}
+.intro-title{font-size:clamp(44px,6vw,92px);line-height:.92;font-weight:500;letter-spacing:-.04em;margin:18px 0}
+.signature{margin-top:34px;font-family:"Cormorant Garamond",serif;font-size:29px}
+.intro-photo{position:relative;overflow:hidden}
+.intro-photo img{aspect-ratio:4/4.6;width:100%;height:100%;object-fit:cover;object-position:center 45%;transition:transform 1.4s var(--ease)}
+@media(hover:hover){.intro-photo:hover img{transform:scale(1.035)}}
+.photo-tag{position:absolute;bottom:16px;left:16px;background:rgba(255,253,249,.92);padding:9px 13px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+
+/* ============ FULL-BLEED ============ */
+.full-bleed{height:min(88vh,820px);min-height:520px;position:relative;overflow:hidden;background:#111}
+.full-bleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.88)}
+.full-bleed:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6),transparent 62%)}
+.full-copy{position:absolute;z-index:2;left:max(var(--pad),calc((100% - 1240px)/2));top:50%;transform:translateY(-50%);color:#fff;max-width:560px;right:var(--pad)}
+.full-title{font-size:clamp(46px,7.5vw,116px);line-height:.86;letter-spacing:-.05em;font-weight:500;margin:14px 0 24px}
+.full-copy p{max-width:440px;color:rgba(255,255,255,.78);line-height:1.85;font-size:clamp(13px,1vw,14.5px)}
+.spec-row{display:flex;gap:clamp(18px,3vw,38px);margin-top:38px;flex-wrap:wrap}
+.spec strong{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+.spec span{display:block;margin-top:6px;font-family:"Cormorant Garamond",serif;font-size:21px;color:#ddd}
+
+/* ============ AMENITIES ============ */
+.amenities{padding:clamp(70px,10vw,145px) 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:clamp(36px,5vw,68px)}
+.section-title{font-size:clamp(42px,5.6vw,84px);line-height:.92;font-weight:500;letter-spacing:-.04em;margin:14px 0 0}
+.section-intro{max-width:360px;color:#6b665e;font-size:clamp(12.5px,.6vw,13.5px);line-height:1.8}
+.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.amenity{min-height:158px;padding:26px 20px;border-bottom:1px solid var(--line)}
+.amenity:nth-child(3n+1),.amenity:nth-child(3n+2){border-right:1px solid var(--line)}
+.amenity-num{font-size:10px;color:var(--stone);letter-spacing:.15em;font-weight:700}
+.amenity h3{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,2vw,31px);font-weight:500;margin:22px 0 8px}
+.amenity p{font-size:clamp(12px,.6vw,12.5px);color:#777168;margin:0;line-height:1.6}
+.amenity-more{display:none}
+
+/* ============ GALLERY ============ */
+.gallery{padding:0 0 clamp(70px,10vw,150px)}
+.gallery-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(12px,1.6vw,18px)}
+.gallery-main img{aspect-ratio:16/11;object-fit:cover}
+.gallery-side{display:grid;grid-template-rows:1fr 1fr;gap:clamp(12px,1.6vw,18px)}
+.gallery-side img{aspect-ratio:3/2;object-fit:cover}
+.gallery figure{position:relative;margin:0;overflow:hidden}
+.caption{position:absolute;left:16px;bottom:16px;color:#fff;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;text-shadow:0 1px 14px rgba(0,0,0,.65)}
+
+/* ============ ROOMS ============ */
+.rooms{padding:clamp(70px,10vw,145px) 0;background:#e6e0d7}
+.room-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,22px)}
+.room{background:#f5f1ea;padding:clamp(12px,1.4vw,18px)}
+.room img{aspect-ratio:4/3.4;object-fit:cover}
+.room-info{padding:clamp(16px,1.8vw,25px) 8px 6px}
+.room h3{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,2.6vw,38px);font-weight:500;margin:0 0 8px}
+.room p{font-size:clamp(12px,.6vw,12.5px);color:#716c63;line-height:1.8}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tag{border:1px solid var(--line);padding:7px 10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+
+/* ============ STAY (dark) ============ */
+.stay{padding:clamp(70px,10vw,150px) 0;background:#181815;color:#f7f3ec}
+.stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,8vw,130px);align-items:center}
+.stay .section-intro{color:#aaa49a}
+.price-card{border-top:1px solid rgba(255,255,255,.22);padding-top:26px;margin-top:42px}
+.price{font-family:"Cormorant Garamond",serif;font-size:clamp(58px,5.4vw,75px);line-height:1;margin:12px 0}
+.price small{font-family:Manrope;font-size:11px;letter-spacing:.12em;color:#9e988e}
+.note{font-size:clamp(12px,.6vw,12.5px);color:#a7a096;line-height:1.8}
+.dark-cta{border-color:rgba(255,255,255,.3)}
+.dark-cta:hover{background:#f7f3ec;color:#181815;border-color:#f7f3ec}
+
+/* ============ PASADÍA ============ */
+.passday{padding:clamp(70px,10vw,150px) 0}
+.pass-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,8vw,130px);align-items:center}
+.pass-photo img{aspect-ratio:4/4.4;object-fit:cover;object-position:center 40%}
+.pass-price{font-family:"Cormorant Garamond",serif;font-size:clamp(56px,5.4vw,86px);line-height:.95;margin:22px 0 14px}
+.pass-price small{font-family:Manrope;font-size:11px;letter-spacing:.1em;color:#777}
+.rule{display:flex;gap:18px;align-items:center;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#777;margin:18px 0 32px;font-weight:600}
+.rule:before{content:"";width:45px;height:1px;background:#aaa}
+
+/* ============ LOCATION ============ */
+.location{padding:clamp(70px,10vw,120px) 0;background:#f4f1eb;border-top:1px solid var(--line)}
+.location-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(30px,7vw,110px);align-items:center}
+.location-map{aspect-ratio:16/10.5;border:1px solid var(--line);overflow:hidden;background:var(--warm)}
+.location-map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.72) contrast(.96)}
+.location-copy .section-title{margin-bottom:22px}
+.location-copy>p{font-size:clamp(12.5px,.6vw,13.5px);line-height:1.9;color:#686259;max-width:54ch}
+.location-facts{display:flex;gap:clamp(24px,3.4vw,46px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:26px 0}
+.location-facts strong{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(26px,2vw,30px);font-weight:500}
+.location-facts span{display:block;margin-top:3px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:600}
+.location-route{margin-top:20px!important}
+.location-cta{margin-top:10px;border-color:rgba(21,21,18,.35);color:var(--ink)}
+.location-cta:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ============ FINAL ============ */
+.final{min-height:82svh;display:grid;place-items:center;text-align:center;background:#11110f;color:#fff;position:relative;overflow:hidden;padding:clamp(60px,9vw,90px) 0}
+.final-bg{position:absolute;inset:0;opacity:.36}
+.final-bg img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.15)}
+.final:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.final-content{position:relative;z-index:2;padding:40px 24px;max-width:820px}
+.final-title{font-size:clamp(52px,10vw,140px);line-height:.8;letter-spacing:-.055em;font-weight:500;margin:18px 0 36px}
+.final-title span{display:block;font-size:.22em;letter-spacing:.22em;text-transform:uppercase;font-family:Manrope;margin-bottom:2.2em;font-weight:500}
+.final p{max-width:470px;margin:0 auto 32px;color:#bbb5ab;line-height:1.8;font-size:clamp(12.5px,.6vw,13.5px)}
+
+/* ============ FOOTER + MOBILE CTA ============ */
+footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.08);padding:26px 0}
+.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.mobile-cta{display:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .navlinks{display:none}
+  .menu-btn{display:block}
+  header{padding:12px 0;background:linear-gradient(180deg,rgba(0,0,0,.42),transparent);mix-blend-mode:normal;color:#fff}
+  .hero{min-height:560px}
+  .hero-content{bottom:clamp(30px,7vh,64px)}
+  .hero-title{font-size:clamp(58px,16.5vw,110px);margin:12px 0 20px}
+  .hero-bottom{display:grid;gap:20px}
+  .hero-copy{font-size:13px;max-width:360px}
+  .hero-bottom .cta{width:100%}
+  .scroll{display:none}
+
+  .intro-grid,.stay-grid,.pass-grid,.location-grid{grid-template-columns:1fr;gap:34px}
+  .section-head{display:block;margin-bottom:34px}
+  .section-intro{margin-top:18px;max-width:44ch}
+  .intro-photo img{aspect-ratio:1/1}
+  .full-bleed{height:auto;min-height:0}
+  .full-bleed img{position:static;aspect-ratio:4/4.6;object-position:center 38%}
+  .full-bleed:after{background:linear-gradient(180deg,rgba(0,0,0,.08) 20%,rgba(0,0,0,.78) 100%)}
+  .full-copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(26px,6vw,44px);top:auto;transform:none;max-width:none}
+  .full-title{font-size:clamp(42px,11.5vw,64px)}
+  .spec-row{gap:16px 26px;margin-top:26px}
+
+  .amenity-grid{grid-template-columns:1fr 1fr}
+  .amenity{min-height:0;padding:18px 14px}
+  .amenity:nth-child(3n+1),.amenity:nth-child(3n+2){border-right:0}
+  .amenity:nth-child(odd){border-right:1px solid var(--line)}
+  .amenity:nth-child(n+9){display:none}
+  .amenity.opened{display:block}
+  .amenity h3{font-size:24px;margin:16px 0 5px}
+  .amenity-more{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;margin-top:20px;padding:15px;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;cursor:pointer;min-height:48px}
+  .amenity-more span{font-size:16px;line-height:1}
+
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-main img{aspect-ratio:4/3.2}
+  .gallery-side{grid-template-rows:none;grid-template-columns:1fr 1fr}
+  .gallery-side img{aspect-ratio:1/1}
+
+  .room-layout{grid-template-columns:1fr}
+  .pass-photo img{aspect-ratio:4/3.4}
+  .pass-grid > div:last-child{order:-1}
+
+  .location-map{aspect-ratio:4/3}
+  .location-cta{width:100%}
+
+  .final{min-height:72svh}
+  .final-content .cta{width:100%}
+  .foot{justify-content:center;text-align:center;line-height:2.1}
+  footer{padding-bottom:96px}
+
+  .mobile-cta{
+    display:flex;position:fixed;left:14px;right:14px;bottom:max(14px,env(safe-area-inset-bottom));
+    z-index:60;align-items:center;justify-content:center;gap:10px;
+    min-height:56px;padding:15px 20px;border-radius:999px;
+    background:#171713;color:#fff;box-shadow:0 12px 35px rgba(0,0,0,.28);
+    font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  }
+}
+@media(max-width:400px){
+  .hero-title{font-size:clamp(50px,17vw,60px)}
+  .gallery-side{grid-template-columns:1fr}
+  .tag{font-size:9.5px;padding:6px 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="La Tesalia Luxury P27 — inicio">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span class="brand-text">La Tesalia · P27</span>
+    </a>
+    <nav class="navlinks" aria-label="Navegación principal">
+      <a href="#experiencia">Experiencia</a>
+      <a href="#amenidades">Amenidades</a>
+      <a href="#hospedaje">Hospedaje</a>
+      <a href="#pasadia">Pasadía</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menú</button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="#experiencia">Experiencia</a>
+  <a href="#amenidades">Amenidades</a>
+  <a href="#hospedaje">Hospedaje</a>
+  <a href="#pasadia">Pasadía</a>
+  <a href="#ubicacion">Ubicación</a>
+  <a class="mm-cta" href="#reservar">Reservar</a>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-media">
+    <img src="img/hero-aerial-1600.webp"
+         srcset="img/hero-aerial-1080.webp 1080w, img/hero-aerial-1600.webp 1600w, img/hero-aerial-2400.webp 2400w"
+         sizes="100vw" width="2400" height="1800"
+         fetchpriority="high" decoding="async"
+         alt="Vista aérea de La Tesalia Luxury P27 con piscina, palapa y zonas sociales">
+  </div>
+  <div class="container hero-content">
+    <p class="eyebrow" style="color:#cfc8bd">Private stay · P27</p>
+    <h1 class="hero-title serif"><span>La Tesalia</span>Luxury</h1>
+    <div class="hero-bottom">
+      <p class="hero-copy">Un espacio privado para desconectarte, compartir y convertir un día cualquiera en una experiencia memorable.</p>
+      <a class="cta" href="#reservar">Descubrir la experiencia</a>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true">Scroll<i></i></div>
+</section>
+
+<section class="intro" id="experiencia">
+  <div class="container intro-grid">
+    <div>
+      <p class="eyebrow">01 · La experiencia</p>
+      <h2 class="intro-title serif">No es solo una cabaña.<br><em>Es tu lugar.</em></h2>
+      <p class="lede">La Tesalia Luxury P27 reúne amplitud, diseño contemporáneo y espacios pensados para disfrutar sin prisa. Una propiedad privada donde la piscina, la zona social y el descanso forman parte de una misma experiencia.</p>
+      <div class="signature">La Tesalia</div>
+    </div>
+    <figure class="intro-photo">
+      <img src="img/intro-dusk-1600.webp"
+           srcset="img/intro-dusk-1080.webp 1080w, img/intro-dusk-1600.webp 1600w"
+           sizes="(max-width:900px) 92vw, 46vw" width="1600" height="1200"
+           loading="lazy" decoding="async"
+           alt="Patio y piscina de La Tesalia al atardecer">
+      <figcaption class="photo-tag">Private residence · P27</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="full-bleed">
+  <img src="img/agua-render-1536.webp"
+       srcset="img/agua-render-1080.webp 1080w, img/agua-render-1536.webp 1536w"
+       sizes="100vw" width="1536" height="1024"
+       loading="lazy" decoding="async"
+       alt="Piscina de doble nivel con zona de jacuzzi">
+  <div class="full-copy">
+    <p class="eyebrow" style="color:#d8d1c7">02 · Agua</p>
+    <h2 class="full-title serif">Dos niveles.<br><em>Una experiencia.</em></h2>
+    <p>Una piscina amplia con zona de jacuzzi y diferentes niveles para pasar del descanso a la diversión en un mismo espacio.</p>
+    <div class="spec-row">
+      <div class="spec"><strong>Piscina</strong><span>Doble nivel</span></div>
+      <div class="spec"><strong>Jacuzzi</strong><span>Zona relax</span></div>
+      <div class="spec"><strong>Exterior</strong><span>Privado</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities" id="amenidades">
+  <div class="container">
+    <div class="section-head">
+      <div><p class="eyebrow">03 · La propiedad</p><h2 class="section-title serif">Todo lo que<br><em>necesitas.</em></h2></div>
+      <p class="section-intro">Cada espacio está pensado para que puedas llegar, instalarte y dedicarte únicamente a disfrutar.</p>
+    </div>
+    <div class="amenity-grid" id="amenityGrid">
+      <article class="amenity"><span class="amenity-num">01</span><h3>Piscina</h3><p>Doble nivel + zona de jacuzzi.</p></article>
+      <article class="amenity"><span class="amenity-num">02</span><h3>Quiosco</h3><p>Espacio exterior para compartir.</p></article>
+      <article class="amenity"><span class="amenity-num">03</span><h3>Zona BBQ</h3><p>Área para preparar y disfrutar.</p></article>
+      <article class="amenity"><span class="amenity-num">04</span><h3>Asadores</h3><p>Asador tradicional y asador a gas.</p></article>
+      <article class="amenity"><span class="amenity-num">05</span><h3>Asoleadoras</h3><p>Descanso junto a la piscina.</p></article>
+      <article class="amenity"><span class="amenity-num">06</span><h3>Sala</h3><p>Espacio interior para compartir.</p></article>
+      <article class="amenity"><span class="amenity-num">07</span><h3>TV</h3><p>Entretenimiento para tus momentos de descanso.</p></article>
+      <article class="amenity"><span class="amenity-num">08</span><h3>Sonido</h3><p>Sistema de sonido profesional.</p></article>
+      <article class="amenity"><span class="amenity-num">09</span><h3>Cocina</h3><p>Espacio equipado para preparar tus comidas.</p></article>
+      <article class="amenity"><span class="amenity-num">10</span><h3>Parqueadero</h3><p>Capacidad para hasta 6 vehículos.</p></article>
+      <article class="amenity"><span class="amenity-num">11</span><h3>Habitaciones</h3><p>4 habitaciones para la estadía del grupo.</p></article>
+      <article class="amenity"><span class="amenity-num">12</span><h3>Baños</h3><p>Habitaciones con baño privado según configuración.</p></article>
+    </div>
+    <button class="amenity-more" type="button" aria-expanded="false" aria-controls="amenityGrid">Ver todas las amenidades <span aria-hidden="true">＋</span></button>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div><p class="eyebrow">04 · Arquitectura</p><h2 class="section-title serif">Detalles que<br><em>se sienten.</em></h2></div>
+      <p class="section-intro">Madera, piedra, iluminación cálida y líneas limpias construyen el carácter de La Tesalia.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-main">
+        <img src="img/sala-1600.webp"
+             srcset="img/sala-800.webp 800w, img/sala-1600.webp 1600w"
+             sizes="(max-width:900px) 92vw, 58vw" width="1600" height="1067"
+             loading="lazy" decoding="async"
+             alt="Sala con panel de madera y TV">
+        <span class="caption">Interior · Living</span>
+      </figure>
+      <div class="gallery-side">
+        <figure>
+          <img src="img/cocina-900.webp" width="900" height="600"
+               loading="lazy" decoding="async"
+               alt="Cocina equipada de La Tesalia">
+          <span class="caption">Cocina</span>
+        </figure>
+        <figure>
+          <img src="img/comedor-900.webp" width="900" height="600"
+               loading="lazy" decoding="async"
+               alt="Comedor con mesa de madera y lámparas de rattan">
+          <span class="caption">Comedor</span>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms">
+  <div class="container">
+    <div class="section-head">
+      <div><p class="eyebrow">05 · Descanso</p><h2 class="section-title serif">Espacios para<br><em>quedarte.</em></h2></div>
+      <p class="section-intro">Configuraciones pensadas para alojar grupos y compartir la experiencia con comodidad.</p>
+    </div>
+    <div class="room-layout">
+      <article class="room">
+        <img src="img/room-bunks-1200.webp" width="1200" height="1500"
+             loading="lazy" decoding="async"
+             alt="Habitación con literas de madera">
+        <div class="room-info">
+          <h3>Habitación 01</h3>
+          <p>Configuración para grupos con tres literas: dos literas dobles y una litera de un solo cuerpo. Cuenta con baño privado.</p>
+          <div class="tags"><span class="tag">3 literas</span><span class="tag">Baño privado</span><span class="tag">Aire acondicionado</span></div>
+        </div>
+      </article>
+      <article class="room">
+        <img src="img/room-bed-1200.webp" width="1200" height="1600"
+             loading="lazy" decoding="async"
+             alt="Habitación con cama doble, cabecera de madera y TV">
+        <div class="room-info">
+          <h3>Habitación 02</h3>
+          <p>Tres literas —dos dobles y una de un solo cuerpo— además de una cama doble y baño privado.</p>
+          <div class="tags"><span class="tag">3 literas</span><span class="tag">Cama doble</span><span class="tag">Baño privado</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="stay" id="hospedaje">
+  <div class="container stay-grid">
+    <div>
+      <p class="eyebrow" style="color:#9e988e">06 · Hospedaje</p>
+      <h2 class="section-title serif">Quédate.<br><em>Desconecta.</em></h2>
+      <p class="section-intro" style="margin-top:26px">Una estadía privada para disfrutar la propiedad, sus espacios sociales y la experiencia completa de La Tesalia.</p>
+    </div>
+    <div>
+      <div class="price-card">
+        <p class="eyebrow" style="color:#9e988e;margin:0">Desde · por persona</p>
+        <div class="price">$80.000 <small>COP</small></div>
+        <p class="note">La tarifa de hospedaje se calcula por persona y contempla una reserva mínima equivalente a 10 huéspedes.</p>
+        <a class="cta dark-cta" href="#reservar" style="margin-top:26px">Consultar disponibilidad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="passday" id="pasadia">
+  <div class="container pass-grid">
+    <div class="pass-photo">
+      <img src="img/palapa-1600.webp"
+           srcset="img/palapa-1080.webp 1080w, img/palapa-1600.webp 1600w"
+           sizes="(max-width:900px) 92vw, 42vw" width="1600" height="1200"
+           loading="lazy" decoding="async"
+           alt="Palapa con hamaca y zona de asados junto a la piscina">
+    </div>
+    <div>
+      <p class="eyebrow">07 · Pasadía</p>
+      <h2 class="section-title serif">Un día puede<br><em>sentirse distinto.</em></h2>
+      <div class="pass-price">$40.000 <small>COP / persona</small></div>
+      <p class="rule">Mínimo 15 personas</p>
+      <p class="lede" style="max-width:48ch">Vive La Tesalia durante un día y disfruta de sus espacios sociales, piscina, jacuzzi y zonas exteriores en compañía de quienes más quieres.</p>
+      <a class="cta" href="#reservar" style="margin-top:28px;border-color:rgba(21,21,18,.35);color:var(--ink)">Reservar pasadía</a>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="ubicacion">
+  <div class="container location-grid">
+    <div class="location-map">
+      <iframe
+        title="Mapa de ubicación de Sabanagrande, Atlántico"
+        src="https://www.google.com/maps?q=Sabanagrande%2C%20Atl%C3%A1ntico%2C%20Colombia&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+    <div class="location-copy">
+      <p class="eyebrow">08 · Ubicación</p>
+      <h2 class="section-title serif">Cerca de la ciudad.<br><em>Lejos del ruido.</em></h2>
+      <p>Sabanagrande está en la zona oriental del Atlántico, a unos 20 km de Barranquilla. La Gobernación registra aproximadamente 21 km y cerca de 20 minutos de recorrido por vía terrestre; el tiempo real puede variar según el tráfico.</p>
+      <div class="location-facts">
+        <div><strong>≈ 20 km</strong><span>desde Barranquilla</span></div>
+        <div><strong>≈ 20 min</strong><span>referencia de recorrido</span></div>
+      </div>
+      <p class="location-route"><b>Cómo llegar:</b> desde Barranquilla puedes tomar la Calle 30 hacia la Vía Oriental y continuar en dirección a Sabanagrande. La variante de Sabanagrande–Santo Tomás–Palmar de Varela permite evitar parte del tráfico urbano y facilita el acceso hacia la zona oriental.</p>
+      <a class="cta location-cta" href="https://www.google.com/maps/dir/?api=1&destination=Sabanagrande%2C%20Atl%C3%A1ntico%2C%20Colombia" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="reservar">
+  <div class="final-bg">
+    <img src="img/final-2000.webp"
+         srcset="img/final-1080.webp 1080w, img/final-2000.webp 2000w"
+         sizes="100vw" width="2000" height="1000"
+         loading="lazy" decoding="async" alt=""
+         aria-hidden="true">
+  </div>
+  <div class="final-content">
+    <p class="eyebrow" style="color:#d0c8bd">09 · Reserva</p>
+    <h2 class="final-title serif"><span>Tu próxima escapada</span>empieza aquí.</h2>
+    <p>Consulta disponibilidad, fechas y condiciones de tu reserva. La Tesalia Luxury P27 está lista para recibirte.</p>
+    <a class="cta" href="#" onclick="openWhatsApp(event)">Consultar por WhatsApp</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container foot">
+    <span>La Tesalia Luxury P27</span>
+    <span>Hospedaje · Pasadía · Experiencia privada</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<a class="mobile-cta" id="mobileCta" href="#" onclick="openWhatsApp(event)">
+  Reservar por WhatsApp
+</a>
+
+<script>
+// ---- Menú móvil ----
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  function setOpen(open){
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Cerrar' : 'Menú';
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  btn.addEventListener('click', function(){ setOpen(menu.hidden); });
+  menu.addEventListener('click', function(e){ if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !menu.hidden) setOpen(false); });
+})();
+
+// ---- Ver todas las amenidades (móvil) ----
+(function(){
+  const btn = document.querySelector('.amenity-more');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.amenity:nth-child(n+9)').forEach(function(el){ el.classList.toggle('opened', !expanded); });
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.innerHTML = expanded ? 'Ver todas las amenidades <span aria-hidden="true">＋</span>' : 'Mostrar menos <span aria-hidden="true">−</span>';
+  });
+})();
+</script>
+
+<script>
+const WHATSAPP_NUMBER = ""; // Ejemplo: "573001234567". Completar antes de publicar.
+function openWhatsApp(e){
+  e.preventDefault();
+  const msg = encodeURIComponent("Hola, quiero consultar disponibilidad de La Tesalia Luxury P27.");
+  if(!WHATSAPP_NUMBER){
+    alert("Aquí conectaremos el número de WhatsApp de La Tesalia.");
+    return;
+  }
+  window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+}
+</script>
+
+</body>
+</html>
