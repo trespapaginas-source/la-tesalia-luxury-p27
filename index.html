@@ -130,56 +130,31 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 
 /* ============ ROOMS ============ */
 .rooms{padding:clamp(70px,10vw,145px) 0;background:#e6e0d7}
-/* ===== DESCANSO · escenario de capítulos ===== */
-.room-scroll{position:relative}
-.room-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:#12100c;color:#f4f1eb}
-.room-stage{position:absolute;inset:0}
-.room-stage img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:saturate(.86) contrast(1.02)}
-@keyframes stageDrift{from{transform:scale(1.02)}to{transform:scale(1.09)}}
-@media(prefers-reduced-motion:no-preference){.room-stage img{animation:stageDrift 60s ease-in-out infinite alternate}}
-.room-stage:after{content:"";position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(18,16,12,.58),rgba(18,16,12,.1) 30%,rgba(18,16,12,.12) 55%,rgba(18,16,12,.92) 90%),
-  linear-gradient(78deg,rgba(18,16,12,.68),rgba(18,16,12,.1) 60%)}
-.room-slide{position:absolute;inset:0;display:flex;align-items:flex-end;z-index:3;opacity:0;pointer-events:none;will-change:transform,opacity}
-.room-copy{width:100%;padding:0 var(--pad) clamp(72px,13svh,120px);max-width:1240px;margin-inline:auto}
-.room-num{position:absolute;right:calc(var(--pad) - .04em);top:7svh;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(112px,26svh,280px);line-height:.8;color:rgba(244,241,235,.22);letter-spacing:-.04em;user-select:none;text-shadow:0 4px 46px rgba(0,0,0,.45)}
-.room-kicker{font-size:10px;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:#cfc8bd}
-.room-title{font-family:"Cormorant Garamond",serif;font-size:clamp(34px,6.4svh,64px);font-weight:500;line-height:1.02;letter-spacing:-.02em;margin:12px 0 14px;color:#fffdf9}
-.room-desc{max-width:44ch;font-size:clamp(13px,1.8svh,15px);line-height:1.75;color:rgba(244,241,235,.82)}
-.rl{list-style:none;margin:clamp(18px,3.4svh,30px) 0 0;padding:0;max-width:340px}
-.rl li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:9px 0;border-top:1px solid rgba(244,241,235,.16);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#d8d1c7}
-.rl li span{font-family:"Cormorant Garamond",serif;font-size:17px;letter-spacing:.02em;text-transform:none;color:#f4f1eb}
-/* riel de progreso */
-.rc-rail{position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
-.rc-rail button{display:flex;align-items:center;gap:9px;background:none;border:0;cursor:pointer;padding:6px;min-height:34px}
-.rc-rail i{display:block;width:18px;height:2px;background:rgba(244,241,235,.34);transition:width .45s var(--ease),background .45s var(--ease)}
-.rc-rail button.on i{width:34px;background:#f4f1eb}
-.rc-rail b{font-size:9.5px;letter-spacing:.22em;color:rgba(244,241,235,.55);font-weight:700;opacity:0;transform:translateX(4px);transition:.35s var(--ease)}
-.rc-rail button.on b{opacity:1;transform:none;color:#f4f1eb}
-.rc-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-/* flechas */
-.rc-nav{position:absolute;bottom:clamp(20px,4svh,34px);right:var(--pad);z-index:6;width:52px;height:52px;border-radius:50%;border:1px solid rgba(244,241,235,.3);background:rgba(18,16,12,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#f4f1eb;font-size:19px;line-height:1;cursor:pointer;display:none;place-items:center;transition:border-color .3s,background .3s,color .3s}
-.rc-nav:hover{background:#f4f1eb;color:#12100c;border-color:#f4f1eb}
-.rc-prev{right:calc(var(--pad) + 60px)}
-@media(hover:hover) and (pointer:fine){.rc-nav{display:grid}}
-/* pista táctil */
-@media(hover:hover) and (pointer:fine){.rc-hint{display:none}}
-.rc-hint{position:absolute;left:50%;bottom:clamp(16px,3svh,26px);transform:translateX(-50%);z-index:6;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:rgba(244,241,235,.6);transition:opacity .5s}
-.room-sticky.show-hint .rc-hint{opacity:1}
-.room-sticky:not(.show-hint) .rc-hint{opacity:0;pointer-events:none}
-.rc-hint:after{content:"";display:block;width:1px;height:26px;margin:9px auto 0;background:linear-gradient(rgba(244,241,235,.7),transparent);animation:hintDrop 1.9s ease-in-out infinite}
-@keyframes hintDrop{0%,100%{transform:scaleY(.35);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
-@media(min-width:901px){
-  .room-num{right:auto;left:calc(var(--pad) - .04em)}
-  .room-copy{padding-left:0}
-  .rc-hint{display:none}
-}
-/* fallback sin JS */
-.room-scroll.static .room-sticky{position:static;height:auto}
-.room-scroll.static .room-stage{position:relative;height:56svh}
-.room-scroll.static .room-slide{position:static;opacity:1!important;transform:none!important;pointer-events:auto}
-.room-scroll.static .room-copy{padding-bottom:30px}
-.room-scroll.static .room-slide + .room-slide{border-top:1px solid rgba(244,241,235,.14)}
+/* ===== DESCANSO · carrusel horizontal de habitaciones ===== */
+.rooms-carousel{position:relative}
+.rc-viewport{display:flex;gap:clamp(12px,1.6vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;padding:6px var(--pad) 10px;scroll-padding-left:var(--pad);
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 94%,transparent)}
+.rc-viewport::-webkit-scrollbar{display:none}
+.rc-card{flex:0 0 min(78vw,430px);scroll-snap-align:start;background:#f5f1ea;padding:clamp(10px,1.2vw,16px);display:flex;flex-direction:column}
+.rc-card img{aspect-ratio:4/3.4;object-fit:cover;width:100%}
+.rc-num{display:flex;align-items:baseline;gap:12px;margin:clamp(14px,1.8vw,22px) 6px 0}
+.rc-num b{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:30px;line-height:1;color:var(--ink)}
+.rc-num span{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--stone)}
+.rc-card h3{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,2.4vw,33px);font-weight:500;margin:8px 6px 8px;line-height:1.05}
+.rc-card p{font-size:12.5px;color:#716c63;line-height:1.75;margin:0 6px}
+.rl{list-style:none;margin:clamp(14px,1.8vw,20px) 6px 10px;padding:0}
+.rl li{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:9px 0;border-top:1px solid var(--line);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:#8f8779}
+.rl li span{font-family:"Cormorant Garamond",serif;font-size:16.5px;letter-spacing:.02em;text-transform:none;color:var(--ink)}
+/* controles */
+.rc-controls{display:flex;align-items:center;gap:clamp(14px,2vw,26px);width:min(1240px,100% - var(--pad)*2);margin:clamp(18px,2.6vw,30px) auto 0}
+.rc-count{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--stone);white-space:nowrap}
+.rc-count b{color:var(--ink)}
+.rc-bar{flex:1;height:2px;background:rgba(21,21,18,.16);position:relative;overflow:hidden}
+.rc-bar i{position:absolute;inset:0;transform-origin:left;background:var(--ink);transform:scaleX(.25);transition:transform .35s var(--ease)}
+.rc-btn{width:52px;height:52px;flex:none;border-radius:50%;border:1px solid rgba(21,21,18,.3);background:#f5f1ea;color:var(--ink);font-size:19px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .28s,color .28s,border-color .28s,opacity .28s}
+.rc-btn:hover:not([disabled]){background:var(--ink);color:#f4f1eb;border-color:var(--ink)}
+.rc-btn[disabled]{opacity:.28;cursor:default}
+@media(min-width:901px){.rc-card{flex-basis:min(38vw,460px)}}
 .rooms-note{margin:26px 0 0;font-size:12px;color:#8a8478;line-height:1.7;max-width:56ch}
 .room img{aspect-ratio:4/3.4;object-fit:cover}
 .room-info{padding:clamp(16px,1.8vw,25px) 8px 6px}
@@ -533,79 +508,63 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
       <p class="section-intro">Configuraciones pensadas para alojar grupos y compartir la experiencia con comodidad.</p>
     </div>
   </div>
-  <div class="room-scroll" id="roomScroll">
-    <div class="room-sticky">
-      <div class="room-stage">
-        <img src="img/room-bed-1200.webp" width="1200" height="1600" decoding="async"
-             alt="Habitación de La Tesalia con cama doble y cabecera de madera">
-      </div>
+  <div class="rooms-carousel">
+    <div class="rc-viewport" id="rcViewport" tabindex="0" role="region" aria-label="Habitaciones de La Tesalia — desliza o usa las flechas">
 
-      <article class="room-slide" data-i="0">
-        <span class="room-num" aria-hidden="true">01</span>
-        <div class="room-copy">
-          <p class="room-kicker">Habitación · 01</p>
-          <h3 class="room-title serif">Para todo<br><em>el grupo.</em></h3>
-          <p class="room-desc">Tres literas —dos dobles y una de un solo cuerpo— pensadas para que el grupo comparta sin sacrificar descanso. Baño privado y aire acondicionado.</p>
-          <ul class="rl">
-            <li>Camas <span>3 literas</span></li>
-            <li>Baño <span>Privado</span></li>
-            <li>Clima <span>Aire acondicionado</span></li>
-          </ul>
-        </div>
+      <article class="rc-card">
+        <img src="img/room-01-literas-1200.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="Habitación 01 con literas de madera">
+        <div class="rc-num"><b>01</b><span>Habitación</span></div>
+        <h3>Para todo el grupo.</h3>
+        <p>Tres literas —dos dobles y una de un solo cuerpo— pensadas para que el grupo comparta sin sacrificar descanso.</p>
+        <ul class="rl">
+          <li>Camas <span>3 literas</span></li>
+          <li>Baño <span>Privado</span></li>
+          <li>Clima <span>Aire acondicionado</span></li>
+        </ul>
       </article>
 
-      <article class="room-slide" data-i="1">
-        <span class="room-num" aria-hidden="true">02</span>
-        <div class="room-copy">
-          <p class="room-kicker">Habitación · 02</p>
-          <h3 class="room-title serif">Literas y<br><em>cama doble.</em></h3>
-          <p class="room-desc">Tres literas —dos dobles y una de un solo cuerpo— más una cama doble para quien prefiere su propio espacio. Baño privado.</p>
-          <ul class="rl">
-            <li>Camas <span>3 literas + doble</span></li>
-            <li>Baño <span>Privado</span></li>
-            <li>Ideal para <span>Grupos mixtos</span></li>
-          </ul>
-        </div>
+      <article class="rc-card">
+        <img src="img/room-bed-1200.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Habitación 02 con cama doble y cabecera de madera">
+        <div class="rc-num"><b>02</b><span>Habitación</span></div>
+        <h3>Literas y cama doble.</h3>
+        <p>Tres literas —dos dobles y una de un solo cuerpo— más una cama doble para quien prefiere su propio espacio.</p>
+        <ul class="rl">
+          <li>Camas <span>3 literas + doble</span></li>
+          <li>Baño <span>Privado</span></li>
+          <li>Ideal para <span>Grupos mixtos</span></li>
+        </ul>
       </article>
 
-      <article class="room-slide" data-i="2">
-        <span class="room-num" aria-hidden="true">03</span>
-        <div class="room-copy">
-          <p class="room-kicker">Habitación · 03</p>
-          <h3 class="room-title serif">El rincón<br><em>tranquilo.</em></h3>
-          <p class="room-desc">Cama doble con acabados cálidos y luz suave. El refugio silencioso de la casa para quien madruga —o para quien no quiere dormir.</p>
-          <ul class="rl">
-            <li>Cama <span>Doble</span></li>
-            <li>Ambiente <span>Cálido y silencioso</span></li>
-            <li>Ideal para <span>Parejas</span></li>
-          </ul>
-        </div>
+      <article class="rc-card">
+        <img src="img/room-03-doble-1200.webp" width="1200" height="1500" loading="lazy" decoding="async" alt="Habitación 03 con cama doble y cabecera dorada">
+        <div class="rc-num"><b>03</b><span>Habitación</span></div>
+        <h3>El rincón tranquilo.</h3>
+        <p>Cama doble con acabados cálidos y luz suave: el refugio silencioso de la casa.</p>
+        <ul class="rl">
+          <li>Cama <span>Doble</span></li>
+          <li>Ambiente <span>Cálido y silencioso</span></li>
+          <li>Ideal para <span>Parejas</span></li>
+        </ul>
       </article>
 
-      <article class="room-slide" data-i="3">
-        <span class="room-num" aria-hidden="true">04</span>
-        <div class="room-copy">
-          <p class="room-kicker">Habitación · 04</p>
-          <h3 class="room-title serif">Descanso<br><em>con pantalla.</em></h3>
-          <p class="room-desc">Cama matrimonial y televisión: la habitación para la siesta larga y la película de medianoche antes de cerrar la noche junto a la piscina.</p>
-          <ul class="rl">
-            <li>Cama <span>Matrimonial</span></li>
-            <li>Entretenimiento <span>TV</span></li>
-            <li>Ideal para <span>Cierre del día</span></li>
-          </ul>
-        </div>
+      <article class="rc-card">
+        <img src="img/room-04-tv-1000.webp" width="1000" height="1333" loading="lazy" decoding="async" alt="Habitación 04 con cama matrimonial y televisión">
+        <div class="rc-num"><b>04</b><span>Habitación</span></div>
+        <h3>Descanso con pantalla.</h3>
+        <p>Cama matrimonial y televisión: para la siesta larga y la película antes de cerrar la noche.</p>
+        <ul class="rl">
+          <li>Cama <span>Matrimonial</span></li>
+          <li>Entretenimiento <span>TV</span></li>
+          <li>Ideal para <span>Cierre del día</span></li>
+        </ul>
       </article>
 
-      <div class="rc-rail" id="roomRail" role="group" aria-label="Habitaciones">
-        <button type="button" data-go="0" aria-label="Ir a la habitación 1"><b>01</b><i></i></button>
-        <button type="button" data-go="1" aria-label="Ir a la habitación 2"><b>02</b><i></i></button>
-        <button type="button" data-go="2" aria-label="Ir a la habitación 3"><b>03</b><i></i></button>
-        <button type="button" data-go="3" aria-label="Ir a la habitación 4"><b>04</b><i></i></button>
-      </div>
-      <span class="rc-live" id="roomCounter" aria-live="polite">Habitación 1 de 4</span>
-      <button class="rc-nav rc-prev" id="roomPrev" type="button" aria-label="Habitación anterior">‹</button>
-      <button class="rc-nav rc-next" id="roomNext" type="button" aria-label="Habitación siguiente">›</button>
-      <div class="rc-hint" aria-hidden="true">Desliza</div>
+    </div>
+    <div class="rc-controls">
+      <span class="rc-count" id="rcCount"><b>01</b> / 04</span>
+      <div class="rc-bar" aria-hidden="true"><i id="rcBarFill"></i></div>
+      <button class="rc-btn" id="rcPrev" type="button" aria-label="Habitación anterior">‹</button>
+      <button class="rc-btn" id="rcNext" type="button" aria-label="Habitación siguiente">›</button>
     </div>
   </div>
   <div class="container">
@@ -806,68 +765,52 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   }, { threshold: 0.15 }).observe(fb);
 })();
 
-// ---- Habitaciones: capítulos sobre escenario fijo, interpolación 1:1 con el scroll ----
+// ---- Habitaciones: carrusel horizontal con flechas y barra de progreso ----
 (function(){
-  var wrap = document.getElementById('roomScroll');
-  if (!wrap) return;
-  var slides = [].slice.call(wrap.querySelectorAll('.room-slide'));
-  var rails  = [].slice.call(wrap.querySelectorAll('.rc-rail button'));
-  var live   = document.getElementById('roomCounter');
-  var n = slides.length;
+  var vp = document.getElementById('rcViewport');
+  if (!vp) return;
+  var cards = [].slice.call(vp.children);
+  var count = document.getElementById('rcCount');
+  var bar = document.getElementById('rcBarFill');
+  var prev = document.getElementById('rcPrev'), next = document.getElementById('rcNext');
   var rm = matchMedia('(prefers-reduced-motion: reduce)');
-  // El anclaje sigue al scroll 1:1 (posicional, no animación decorativa): activo siempre.
-  var sticky = 'IntersectionObserver' in window && window.requestAnimationFrame;
-  if (!sticky) wrap.classList.add('static');
-
-  function progress(){
-    var total = wrap.offsetHeight - innerHeight;
-    if (total <= 0) return 0;
-    return Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / total));
+  // Relleno final dinámico: permite que la última tarjeta se alinee al inicio
+  function padEnd(){
+    var extra = Math.max(0, vp.clientWidth - cards[0].offsetWidth - 20);
+    vp.style.paddingRight = extra + 'px';
   }
-  var current = 0, ticking = false;
-
+  function step(){ return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left; }
+  function idx(){
+    var best = 0, min = 1e9;
+    cards.forEach(function(c, i){
+      var d = Math.abs(c.getBoundingClientRect().left - vp.getBoundingClientRect().left);
+      if (d < min){ min = d; best = i; }
+    });
+    return best;
+  }
   function update(){
-    ticking = false;
-    if (!sticky) return;
-    var act = progress() * (n - 1);
-    var idx = Math.round(act);
-    for (var i = 0; i < n; i++){
-      var d = act - i;                       // -1 (próxima) … 0 (activa) … 1 (pasada)
-      var el = slides[i], num = el.querySelector('.room-num');
-      if (rm.matches){
-        el.style.opacity = i === idx ? 1 : 0;
-        el.style.transform = num.style.transform = '';
-      } else {
-        var abs = Math.min(1, Math.abs(d));
-        el.style.opacity = (1 - abs).toFixed(3);
-        el.style.transform = 'translateY(' + (d * -9).toFixed(2) + 'vh)';
-        if (num) num.style.transform = 'translateY(' + (d * -4.5).toFixed(2) + 'vh)'; // paralaje del numeral
-      }
-      el.style.pointerEvents = (i === idx) ? '' : 'none';
-    }
-    for (var r = 0; r < rails.length; r++) rails[r].classList.toggle('on', r === idx);
-    if (idx !== current){
-      current = idx;
-      if (live) live.textContent = 'Habitación ' + (idx + 1) + ' de ' + n;
-    }
-    wrap.querySelector('.room-sticky').classList.toggle('show-hint', progress() < 0.02);
+    var i = idx();
+    var max = vp.scrollWidth - vp.clientWidth;
+    var p = max > 0 ? vp.scrollLeft / max : 0;
+    if (bar) bar.style.transform = 'scaleX(' + (0.25 + p * 0.75).toFixed(3) + ')';
+    if (count) count.innerHTML = '<b>' + String(i + 1).padStart(2, '0') + '</b> / ' + String(cards.length).padStart(2, '0');
+    if (prev) prev.disabled = vp.scrollLeft <= 4;
+    if (next) next.disabled = vp.scrollLeft >= max - 4;
   }
-  addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  addEventListener('resize', function(){ if (sticky) wrap.style.height = (n * 100) + 'svh'; update(); });
-  if (sticky) wrap.style.height = (n * 100) + 'svh';
-  update();
-
-  function goTo(i){
-    i = Math.max(0, Math.min(n - 1, i));
-    var y = wrap.classList.contains('static')
-      ? slides[i].getBoundingClientRect().top + scrollY - 90
-      : wrap.offsetTop + i * (wrap.offsetHeight / n) + 2;
-    scrollTo({ top: y, behavior: rm.matches ? 'auto' : 'smooth' });
+  var t = false;
+  vp.addEventListener('scroll', function(){ if (!t){ t = true; requestAnimationFrame(function(){ t = false; update(); }); } }, { passive: true });
+  addEventListener('resize', function(){ padEnd(); update(); });
+  function go(i){
+    i = Math.max(0, Math.min(cards.length - 1, i));
+    vp.scrollTo({ left: i * step(), behavior: rm.matches ? 'auto' : 'smooth' });
   }
-  var prev = document.getElementById('roomPrev'), next = document.getElementById('roomNext');
-  if (prev) prev.addEventListener('click', function(){ goTo(current - 1); });
-  if (next) next.addEventListener('click', function(){ goTo(current + 1); });
-  rails.forEach(function(b){ b.addEventListener('click', function(){ goTo(parseInt(b.dataset.go, 10)); }); });
+  if (prev) prev.addEventListener('click', function(){ go(idx() - 1); });
+  if (next) next.addEventListener('click', function(){ go(idx() + 1); });
+  vp.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight'){ e.preventDefault(); go(idx() + 1); }
+    if (e.key === 'ArrowLeft'){ e.preventDefault(); go(idx() - 1); }
+  });
+  padEnd(); update();
 })();
 
 // ---- Aparición al hacer scroll (slow motion, escalonado) ----
