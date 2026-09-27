@@ -771,7 +771,9 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   var counter = document.getElementById('roomCounter');
   var slides = track.children.length;
   var rm = matchMedia('(prefers-reduced-motion: reduce)');
-  var sticky = !rm.matches && 'IntersectionObserver' in window && window.requestAnimationFrame;
+  // El recorrido anclado sigue al scroll 1:1 (no es una animación decorativa),
+  // por eso se activa siempre; reduced-motion solo quita el desplazamiento suave de las flechas.
+  var sticky = 'IntersectionObserver' in window && window.requestAnimationFrame;
   if (!sticky) wrap.classList.add('static');
   function progress(){
     var total = wrap.offsetHeight - innerHeight;
