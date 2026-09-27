@@ -34,6 +34,14 @@ QUÉ SE ARREGLÓ
   todos los targets táctiles ≥ 44px, prefers-reduced-motion respetado.
 - Navegación móvil: menú overlay nuevo (antes los enlaces simplemente
   desaparecían), cierre con Escape y al navegar.
+- Flujo de reserva con calendario propio (sin dependencias):
+  modal de 2 pasos — 1) modo Hospedaje (rango de fechas, resalta
+  noches) o Pasadía (día único), navegación de meses, fechas pasadas
+  bloqueadas; 2) nombre + invitados con mínimos (10 hospedaje /
+  15 pasadía), steppers y validación inline. Estimado de precio en
+  vivo y envío del resumen por WhatsApp. Accesible: role=dialog,
+  foco atrapado, Escape cierra, aria-live en resumen, días >=44px
+  táctiles. En móvil es bottom-sheet.
 - CLS: todas las imágenes con width/height explícitos y aspect-ratio.
 
 ANTES DE PRODUCCIÓN

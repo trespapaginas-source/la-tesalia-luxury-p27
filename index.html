@@ -175,6 +175,61 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
 .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
 .mobile-cta{display:none}
 
+/* ============ BOOKING MODAL ============ */
+.bk-overlay{position:fixed;inset:0;z-index:90;background:rgba(12,12,10,.66);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:grid;place-items:center;padding:clamp(12px,3vw,28px);opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.bk-overlay.open{opacity:1;pointer-events:auto}
+.bk{width:min(560px,100%);max-height:min(92svh,840px);overflow:auto;background:#161613;color:#f4f1eb;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:clamp(20px,3.4vw,34px);transform:translateY(14px);transition:transform .35s var(--ease);scrollbar-width:thin}
+.bk-overlay.open .bk{transform:none}
+.bk-head{display:flex;justify-content:space-between;align-items:start;gap:14px;margin-bottom:22px}
+.bk-title{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,4vw,36px);font-weight:500;line-height:1.05;margin:6px 0 0}
+.bk-close{background:none;border:1px solid rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;flex:none;cursor:pointer;color:#f4f1eb;font-size:17px;line-height:1;display:grid;place-items:center;transition:background .25s,color .25s}
+.bk-close:hover{background:#f4f1eb;color:#161613}
+.bk-steps{display:flex;gap:18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8f8779;font-weight:700}
+.bk-steps b{color:#cfc8bd}
+.bk-modes{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.2);margin-bottom:22px}
+.bk-mode{background:none;border:0;cursor:pointer;color:#8f8779;padding:13px 10px;min-height:48px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;transition:background .25s,color .25s}
+.bk-mode + .bk-mode{border-left:1px solid rgba(255,255,255,.2)}
+.bk-mode[aria-pressed="true"]{background:#f4f1eb;color:#161613}
+.bk-cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.bk-month{font-family:"Cormorant Garamond",serif;font-size:23px;font-weight:500}
+.bk-nav{background:none;border:1px solid rgba(255,255,255,.22);border-radius:50%;width:44px;height:44px;cursor:pointer;color:#f4f1eb;font-size:15px;display:grid;place-items:center;transition:background .25s,color .25s}
+.bk-nav:hover{background:#f4f1eb;color:#161613}
+.bk-nav[disabled]{opacity:.3;cursor:default}
+.bk-nav[disabled]:hover{background:none;color:#f4f1eb}
+.bk-weekdays,.bk-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.bk-weekdays span{text-align:center;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8f8779;font-weight:700;padding:7px 0}
+.bk-day{aspect-ratio:1;min-height:38px;background:none;border:0;border-radius:2px;cursor:pointer;color:#e9e4da;font-size:13px;font-weight:500;display:grid;place-items:center;transition:background .18s,color .18s}
+.bk-day:hover:not([disabled]){background:rgba(244,241,235,.14)}
+.bk-day[disabled]{opacity:.22;cursor:default}
+.bk-day.out{opacity:0;pointer-events:none}
+.bk-day.range{background:rgba(244,241,235,.17);border-radius:0}
+.bk-day.sel{background:#f4f1eb;color:#161613;font-weight:700}
+.bk-day.today{box-shadow:inset 0 0 0 1px rgba(244,241,235,.45)}
+.bk-summary{margin:18px 0 0;padding:15px 16px;border:1px solid rgba(255,255,255,.16);font-size:12.5px;line-height:1.7;color:#cfc8bd;min-height:52px}
+.bk-summary b{color:#f4f1eb}
+.bk-summary .muted{color:#8f8779}
+.bk-primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;margin-top:18px;background:#f4f1eb;color:#161613;border:0;cursor:pointer;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;transition:opacity .25s}
+.bk-primary:hover{opacity:.9}
+.bk-primary[disabled]{opacity:.28;cursor:default}
+.bk-ghost{display:inline-flex;background:none;border:0;cursor:pointer;color:#8f8779;padding:14px 2px;min-height:44px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+.bk-ghost:hover{color:#f4f1eb}
+/* form */
+.bk-field{margin-top:18px}
+.bk-field label{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8f8779;font-weight:700;margin-bottom:8px}
+.bk-input{width:100%;background:#1e1e1a;border:1px solid rgba(255,255,255,.2);color:#f4f1eb;padding:15px 14px;min-height:50px;font:inherit;font-size:14px;border-radius:2px}
+.bk-input:focus{outline:2px solid #b99b7c;outline-offset:0;border-color:#b99b7c}
+.bk-count{display:flex;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.bk-count button{width:54px;height:50px;background:none;border:0;cursor:pointer;color:#f4f1eb;font-size:19px;transition:background .2s}
+.bk-count button:hover{background:rgba(244,241,235,.12)}
+.bk-count output{flex:1;text-align:center;font-size:16px;font-weight:600}
+.bk-error{display:none;margin-top:7px;font-size:11.5px;color:#e2937f}
+.bk-field.invalid .bk-error{display:block}
+.bk-field.invalid .bk-input,.bk-field.invalid .bk-count{border-color:#c2604a}
+.bk-hint{margin-top:7px;font-size:11px;color:#8f8779}
+.bk-estimate{margin-top:20px;padding:15px 16px;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.bk-estimate .val{font-family:"Cormorant Garamond",serif;font-size:27px}
+.bk-estimate small{display:block;font-size:10px;color:#8f8779;letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+
 /* ============ RESPONSIVE ============ */
 @media(max-width:900px){
   .navlinks{display:none}
@@ -233,7 +288,13 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     background:#171713;color:#fff;box-shadow:0 12px 35px rgba(0,0,0,.28);
     font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   }
+  .bk-overlay{place-items:end stretch;padding:0;align-items:end}
+  .bk{width:100%;max-height:94svh;border-radius:16px 16px 0 0;border-bottom:0;padding-bottom:max(20px,env(safe-area-inset-bottom))}
+  .bk-overlay.open .bk{animation:bkUp .38s var(--ease)}
+  .bk-day{min-height:44px}
+  .bk-estimate .val{font-size:24px}
 }
+@keyframes bkUp{from{transform:translateY(6%)}to{transform:none}}
 @media(max-width:400px){
   .hero-title{font-size:clamp(50px,17vw,60px)}
   .gallery-side{grid-template-columns:1fr}
@@ -270,7 +331,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   <a href="#hospedaje">Hospedaje</a>
   <a href="#pasadia">Pasadía</a>
   <a href="#ubicacion">Ubicación</a>
-  <a class="mm-cta" href="#reservar">Reservar</a>
+  <a class="mm-cta" href="#" data-bk="stay">Reservar</a>
 </div>
 
 <main id="top">
@@ -437,7 +498,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
         <p class="eyebrow" style="color:#9e988e;margin:0">Desde · por persona</p>
         <div class="price">$80.000 <small>COP</small></div>
         <p class="note">La tarifa de hospedaje se calcula por persona y contempla una reserva mínima equivalente a 10 huéspedes.</p>
-        <a class="cta dark-cta" href="#reservar" style="margin-top:26px">Consultar disponibilidad</a>
+        <a class="cta dark-cta" href="#reservar" data-bk="stay" style="margin-top:26px">Consultar disponibilidad</a>
       </div>
     </div>
   </div>
@@ -458,7 +519,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
       <div class="pass-price">$40.000 <small>COP / persona</small></div>
       <p class="rule">Mínimo 15 personas</p>
       <p class="lede" style="max-width:48ch">Vive La Tesalia durante un día y disfruta de sus espacios sociales, piscina, jacuzzi y zonas exteriores en compañía de quienes más quieres.</p>
-      <a class="cta" href="#reservar" style="margin-top:28px;border-color:rgba(21,21,18,.35);color:var(--ink)">Reservar pasadía</a>
+      <a class="cta" href="#reservar" data-bk="pass" style="margin-top:28px;border-color:rgba(21,21,18,.35);color:var(--ink)">Reservar pasadía</a>
     </div>
   </div>
 </section>
@@ -498,8 +559,8 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   <div class="final-content">
     <p class="eyebrow" style="color:#d0c8bd">09 · Reserva</p>
     <h2 class="final-title serif"><span>Tu próxima escapada</span>empieza aquí.</h2>
-    <p>Consulta disponibilidad, fechas y condiciones de tu reserva. La Tesalia Luxury P27 está lista para recibirte.</p>
-    <a class="cta" href="#" onclick="openWhatsApp(event)">Consultar por WhatsApp</a>
+    <p>Elige tus fechas y te contamos todo: disponibilidad, condiciones y valores. La Tesalia Luxury P27 está lista para recibirte.</p>
+    <a class="cta" href="#" data-bk="stay">Consultar disponibilidad</a>
   </div>
 </section>
 
@@ -513,9 +574,66 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   </div>
 </footer>
 
-<a class="mobile-cta" id="mobileCta" href="#" onclick="openWhatsApp(event)">
-  Reservar por WhatsApp
+<a class="mobile-cta" id="mobileCta" href="#" data-bk="stay">
+  Reservar ahora
 </a>
+
+<!-- ============ MODAL DE RESERVA ============ -->
+<div class="bk-overlay" id="bkOverlay">
+  <div class="bk" role="dialog" aria-modal="true" aria-labelledby="bkTitle" id="bkDialog">
+
+    <div class="bk-head">
+      <div>
+        <div class="bk-steps" id="bkSteps"><b>Paso 1</b><span>Fechas</span><span>·</span><span>Paso 2 · Tus datos</span></div>
+        <h3 class="bk-title" id="bkTitle">Elige tus fechas</h3>
+      </div>
+      <button class="bk-close" id="bkClose" aria-label="Cerrar" type="button">✕</button>
+    </div>
+
+    <!-- PASO 1: calendario -->
+    <div id="bkStep1">
+      <div class="bk-modes" role="group" aria-label="Tipo de reserva">
+        <button class="bk-mode" id="modeStay" type="button" aria-pressed="true">Hospedaje · rango</button>
+        <button class="bk-mode" id="modePass" type="button" aria-pressed="false">Pasadía · un día</button>
+      </div>
+      <div class="bk-cal-head">
+        <button class="bk-nav" id="bkPrev" type="button" aria-label="Mes anterior">‹</button>
+        <div class="bk-month" id="bkMonth" aria-live="polite">—</div>
+        <button class="bk-nav" id="bkNext" type="button" aria-label="Mes siguiente">›</button>
+      </div>
+      <div class="bk-weekdays" aria-hidden="true"><span>lu</span><span>ma</span><span>mi</span><span>ju</span><span>vi</span><span>sá</span><span>do</span></div>
+      <div class="bk-days" id="bkDays"></div>
+      <div class="bk-summary" id="bkSummary" aria-live="polite">Selecciona <b id="bkSumMode">la fecha de llegada</b> en el calendario.</div>
+      <button class="bk-primary" id="bkContinue" type="button" disabled>Continuar</button>
+    </div>
+
+    <!-- PASO 2: datos -->
+    <div id="bkStep2" hidden>
+      <button class="bk-ghost" id="bkBack" type="button">‹ Volver a fechas</button>
+      <div class="bk-field" id="fName">
+        <label for="bkName">Tu nombre</label>
+        <input class="bk-input" id="bkName" type="text" autocomplete="name" placeholder="¿Cómo te llamas?">
+        <p class="bk-error" id="eName">Escribe tu nombre para continuar.</p>
+      </div>
+      <div class="bk-field" id="fGuests">
+        <label for="bkGuests" id="lblGuests">Huéspedes</label>
+        <div class="bk-count">
+          <button type="button" id="gMinus" aria-label="Menos invitados">−</button>
+          <output id="bkGuestsOut" for="bkGuests">10</output>
+          <button type="button" id="gPlus" aria-label="Más invitados">+</button>
+        </div>
+        <p class="bk-hint" id="hGuests">La reserva de hospedaje tiene un mínimo de 10 huéspedes.</p>
+        <p class="bk-error" id="eGuests">El mínimo para hospedaje es 10 huéspedes.</p>
+      </div>
+      <div class="bk-estimate">
+        <div><span class="val" id="bkEstimate">$800.000</span><small>Estimado total · COP</small></div>
+        <div style="font-size:11px;color:#8f8779;text-align:right;line-height:1.6" id="bkEstDetail">10 pax × $80.000</div>
+      </div>
+      <button class="bk-primary" id="bkSubmit" type="button">Consultar por WhatsApp</button>
+    </div>
+
+  </div>
+</div>
 
 <script>
 // ---- Menú móvil ----
@@ -557,6 +675,217 @@ function openWhatsApp(e){
   }
   window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
 }
+
+// ============ MODAL DE RESERVA ============
+(function(){
+  const PRICE = { stay: 80000, pass: 40000 };
+  const MIN   = { stay: 10,   pass: 15 };
+  const MAX_GUESTS = 80;
+  const MONTHS = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  const fmtLong  = new Intl.DateTimeFormat('es-CO', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const fmtShort = new Intl.DateTimeFormat('es-CO', { day:'numeric', month:'short' });
+
+  const $ = id => document.getElementById(id);
+  const overlay = $('bkOverlay'), dialog = $('bkDialog');
+  const state = { mode:'stay', vy:0, vm:0, start:null, end:null, single:null, guests:10, step:1 };
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const key = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  const parse = k => { const [y,m,d] = k.split('-').map(Number); return new Date(y, m-1, d); };
+  const nights = () => state.start && state.end ? Math.round((state.end - state.start) / 864e5) : 0;
+  const minGuests = () => MIN[state.mode];
+
+  // ---------- calendario ----------
+  function renderCalendar(){
+    const y = state.vy, m = state.vm;
+    $('bkMonth').textContent = MONTHS[m].charAt(0).toUpperCase() + MONTHS[m].slice(1) + ' ' + y;
+    const first = new Date(y, m, 1);
+    let lead = (first.getDay() + 6) % 7;               // semana inicia lunes
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const grid = $('bkDays');
+    grid.innerHTML = '';
+    for (let i = 0; i < lead; i++) grid.appendChild(Object.assign(document.createElement('button'), { className:'bk-day out', type:'button', tabIndex:-1, disabled:true }));
+    for (let d = 1; d <= daysInMonth; d++){
+      const date = new Date(y, m, d);
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'bk-day'; b.textContent = d;
+      b.setAttribute('data-k', key(date));
+      b.setAttribute('aria-label', fmtLong.format(date));
+      if (date < today){ b.disabled = true; }
+      else {
+        const k = key(date);
+        if (state.mode === 'pass'){
+          if (state.single && k === state.single) b.classList.add('sel');
+        } else {
+          if (state.start && k === state.start) b.classList.add('sel');
+          if (state.end && k === state.end) b.classList.add('sel');
+          if (state.start && state.end && date > state.start && date < state.end) b.classList.add('range');
+        }
+        if (date.getTime() === today.getTime()) b.classList.add('today');
+      }
+      grid.appendChild(b);
+    }
+    const past = new Date(y, m, 1) <= new Date(today.getFullYear(), today.getMonth(), 1);
+    $('bkPrev').disabled = past;
+  }
+
+  function pick(k){
+    const d = parse(k);
+    if (state.mode === 'pass'){
+      state.single = (state.single === k) ? null : k;
+    } else if (!state.start || state.end || d <= state.start){
+      state.start = d; state.end = null;
+    } else {
+      state.end = d;
+    }
+    renderCalendar(); renderSummary();
+  }
+
+  function renderSummary(){
+    const sum = $('bkSummary'), btn = $('bkContinue');
+    if (state.mode === 'pass'){
+      if (state.single){
+        const d = parse(state.single);
+        sum.innerHTML = '<b>Pasadía · ' + fmtLong.format(d) + '.</b> <span class="muted">Día completo desde las 9:00 a. m.</span>';
+        btn.disabled = false;
+      } else {
+        sum.innerHTML = 'Selecciona <b>el día de tu pasadía</b> en el calendario.';
+        btn.disabled = true;
+      }
+    } else {
+      if (state.start && state.end){
+        sum.innerHTML = '<b>' + fmtShort.format(state.start) + ' → ' + fmtShort.format(state.end) + '</b> · ' + nights() + ' noche' + (nights()>1?'s':'') + '. <span class="muted>Llegada desde las 3:00 p. m.</span>';
+        btn.disabled = false;
+      } else if (state.start){
+        sum.innerHTML = 'Llegada: <b>' + fmtLong.format(state.start) + '</b>. Ahora selecciona <b>la fecha de salida</b>.';
+        btn.disabled = true;
+      } else {
+        sum.innerHTML = 'Selecciona <b>la fecha de llegada</b> en el calendario.';
+        btn.disabled = true;
+      }
+    }
+  }
+
+  // ---------- paso 2 ----------
+  const fmtCOP = n => '$' + n.toLocaleString('es-CO');
+
+  function toStep2(){
+    state.step = 2;
+    $('bkStep1').hidden = true; $('bkStep2').hidden = false;
+    $('bkTitle').textContent = 'Cuéntanos de ti';
+    $('bkSteps').innerHTML = '<span>Paso 1 · Fechas ✓</span><span>·</span><b>Paso 2</b><span>Tus datos</span>';
+    state.guests = Math.max(state.guests, minGuests());
+    renderGuests();
+    const dateTxt = state.mode === 'pass'
+      ? 'Pasadía · ' + fmtLong.format(parse(state.single))
+      : 'Hospedaje · ' + fmtShort.format(state.start) + ' → ' + fmtShort.format(state.end) + ' (' + nights() + ' noches)';
+    $('lblGuests').textContent = state.mode === 'pass' ? '¿Cuántas personas?' : 'Huéspedes';
+    $('hGuests').textContent = state.mode === 'pass'
+      ? 'La pasadía tiene un mínimo de 15 personas.'
+      : 'La reserva de hospedaje tiene un mínimo de 10 huéspedes.';
+    $('eGuests').textContent = 'El mínimo ' + (state.mode === 'pass' ? 'para la pasadía es 15 personas.' : 'para hospedaje es 10 huéspedes.');
+    $('bkName').focus();
+    dialog.dataset.datetxt = dateTxt;
+  }
+
+  function toStep1(){
+    state.step = 1;
+    $('bkStep2').hidden = true; $('bkStep1').hidden = false;
+    $('bkTitle').textContent = 'Elige tus fechas';
+    $('bkSteps').innerHTML = '<b>Paso 1</b><span>Fechas</span><span>·</span><span>Paso 2 · Tus datos</span>';
+    renderSummary();
+  }
+
+  function renderGuests(){
+    $('bkGuestsOut').textContent = state.guests;
+    $('gMinus').disabled = state.guests <= minGuests();
+    $('gPlus').disabled = state.guests >= MAX_GUESTS;
+    const unit = PRICE[state.mode];
+    const units = state.mode === 'stay' ? nights() : 1;
+    const total = state.guests * unit * units;
+    $('bkEstimate').textContent = fmtCOP(total);
+    $('bkEstDetail').innerHTML = state.guests + (state.mode==='stay'?' huéspedes':' personas') + ' × ' + fmtCOP(unit) + (state.mode==='stay' ? ' × ' + nights() + ' noches' : '') + '<br><span style="color:#6f6a5f">El anfitrión confirma el valor final.</span>';
+  }
+
+  function validName(){ return $('bkName').value.trim().length >= 2; }
+  function validGuests(){ return state.guests >= minGuests(); }
+  function validate(){
+    const okN = validName(), okG = validGuests();
+    $('fName').classList.toggle('invalid', !okN);
+    $('fGuests').classList.toggle('invalid', !okG);
+    return okN && okG;
+  }
+
+  // ---------- envío ----------
+  function submit(){
+    if (!validate()){ (validName() ? $('bkGuestsOut') : $('bkName')).focus(); return; }
+    const name = $('bkName').value.trim();
+    const msg = 'Hola, soy ' + name + '. Quiero consultar disponibilidad de La Tesalia Luxury P27:\n'
+      + '• ' + dialog.dataset.datetxt + '\n'
+      + '• ' + state.guests + (state.mode==='stay' ? ' huéspedes' : ' personas');
+    if (!WHATSAPP_NUMBER){
+      alert('Aquí conectaremos el número de WhatsApp de La Tesalia.\n\nTu consulta quedó lista:\n' + msg);
+      return;
+    }
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    close();
+  }
+
+  // ---------- apertura / cierre ----------
+  let lastFocus = null;
+  function open(mode){
+    state.mode = (mode === 'pass') ? 'pass' : 'stay';
+    state.start = null; state.end = null; state.single = null; state.step = 1;
+    state.vy = today.getFullYear(); state.vm = today.getMonth();
+    $('modeStay').setAttribute('aria-pressed', String(state.mode === 'stay'));
+    $('modePass').setAttribute('aria-pressed', String(state.mode === 'pass'));
+    $('bkStep2').hidden = true; $('bkStep1').hidden = false;
+    $('bkName').value = ''; $('fName').classList.remove('invalid'); $('fGuests').classList.remove('invalid');
+    $('bkTitle').textContent = 'Elige tus fechas';
+    $('bkSteps').innerHTML = '<b>Paso 1</b><span>Fechas</span><span>·</span><span>Paso 2 · Tus datos</span>';
+    lastFocus = document.activeElement;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderCalendar(); renderSummary();
+    $('bkClose').focus();
+  }
+  function close(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  // ---------- eventos ----------
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('[data-bk]');
+    if (t){ e.preventDefault(); open(t.dataset.bk); return; }
+    const day = e.target.closest('.bk-day');
+    if (day && day.dataset.k && !day.disabled) pick(day.dataset.k);
+  });
+  $('bkClose').addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape'){ close(); return; }
+    if (e.key === 'Tab'){                                  // trampa de foco
+      const f = [...dialog.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled && el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+  $('bkPrev').addEventListener('click', function(){ state.vm--; if (state.vm < 0){ state.vm = 11; state.vy--; } renderCalendar(); });
+  $('bkNext').addEventListener('click', function(){ state.vm++; if (state.vm > 11){ state.vm = 0; state.vy++; } renderCalendar(); });
+  $('modeStay').addEventListener('click', function(){ if (state.mode !== 'stay'){ state.mode='stay'; state.single=null; state.start=null; state.end=null; $('modeStay').setAttribute('aria-pressed','true'); $('modePass').setAttribute('aria-pressed','false'); renderCalendar(); renderSummary(); } });
+  $('modePass').addEventListener('click', function(){ if (state.mode !== 'pass'){ state.mode='pass'; state.single=null; state.start=null; state.end=null; $('modePass').setAttribute('aria-pressed','true'); $('modeStay').setAttribute('aria-pressed','false'); renderCalendar(); renderSummary(); } });
+  $('bkContinue').addEventListener('click', toStep2);
+  $('bkBack').addEventListener('click', toStep1);
+  $('gMinus').addEventListener('click', function(){ if (state.guests > minGuests()){ state.guests--; renderGuests(); $('fGuests').classList.remove('invalid'); } });
+  $('gPlus').addEventListener('click', function(){ if (state.guests < MAX_GUESTS){ state.guests++; renderGuests(); $('fGuests').classList.remove('invalid'); } });
+  $('bkName').addEventListener('blur', function(){ if ($('bkName').value.trim() !== '') $('fName').classList.toggle('invalid', !validName()); });
+  $('bkSubmit').addEventListener('click', submit);
+})();
 </script>
 
 </body>
