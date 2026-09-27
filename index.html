@@ -139,7 +139,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 .rc-prev{left:clamp(14px,3vw,44px)}.rc-next{right:clamp(14px,3vw,44px)}
 .rc-nav:hover{background:var(--ink);color:#fff}
 .rc-counter{position:absolute;top:18px;right:18px;z-index:6;background:rgba(245,241,234,.92);border:1px solid var(--line);padding:7px 12px;font-size:10px;letter-spacing:.15em;font-weight:700}
-@media(hover:hover) and (min-width:901px){.rc-nav{display:grid}}
+.rc-hint{display:none;position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:6;background:rgba(245,241,234,.92);border:1px solid var(--line);padding:8px 14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+@media(hover:none) and (pointer:coarse){.room-sticky.show-hint .rc-hint{display:block}}
+@media(hover:hover) and (pointer:fine){.rc-nav{display:grid}}
 /* fallback: sin anclaje (reducir movimiento / sin JS) */
 .room-scroll.static .room-sticky{position:static;height:auto}
 .room-scroll.static .room{height:auto;padding:16px var(--pad)}
@@ -560,6 +562,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     <button class="rc-nav rc-prev" id="roomPrev" type="button" aria-label="Habitación anterior">‹</button>
     <button class="rc-nav rc-next" id="roomNext" type="button" aria-label="Habitación siguiente">›</button>
     <div class="rc-counter" id="roomCounter" aria-live="polite">1 / 4</div>
+    <div class="rc-hint" aria-hidden="true">Desliza · 4 habitaciones ↓</div>
     </div>
   </div>
   <div class="container">
@@ -782,6 +785,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     var p = progress();
     track.style.transform = 'translateY(' + (-p * (slides - 1) * innerHeight) + 'px)';
     if (counter) counter.textContent = (Math.round(p * (slides - 1)) + 1) + ' / ' + slides;
+    wrap.querySelector('.room-sticky').classList.toggle('show-hint', p < 0.02);
   }
   function setHeight(){ if (sticky) wrap.style.height = (slides * 100) + 'svh'; }
   addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive: true });
