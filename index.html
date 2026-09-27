@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
+img{display:block;max-width:100%;height:auto;pointer-events:none;-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 ::selection{background:#1b1b18;color:#fff}
@@ -271,7 +271,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   .gallery-grid{grid-template-columns:1fr}
   .gallery-main img{aspect-ratio:4/3.2}
   .gallery-side{grid-template-rows:none;grid-template-columns:1fr 1fr}
-  .gallery-side img{aspect-ratio:1/1}
+  .gallery-side img{aspect-ratio:3/2}
 
   .room-layout{grid-template-columns:1fr}
   .pass-photo img{aspect-ratio:4/3.4}
@@ -468,9 +468,9 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     </div>
     <div class="room-layout">
       <article class="room">
-        <img src="img/room-bunks-1200.webp" width="1200" height="1500"
+        <img src="img/room-bed-1200.webp" width="1200" height="1600"
              loading="lazy" decoding="async"
-             alt="Habitación con literas de madera">
+             alt="Habitación de La Tesalia con cama doble y cabecera de madera">
         <div class="room-info">
           <h3>Habitación 01</h3>
           <p>Configuración para grupos con tres literas: dos literas dobles y una litera de un solo cuerpo. Cuenta con baño privado.</p>
@@ -488,19 +488,19 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
         </div>
       </article>
       <article class="room">
-        <img src="img/room-03-1200.webp" width="1200" height="1500"
+        <img src="img/room-bed-1200.webp" width="1200" height="1600"
              loading="lazy" decoding="async"
-             alt="Habitación con cama doble y cabecera dorada">
+             alt="Habitación 03 de La Tesalia con cama doble y acabados cálidos">
         <div class="room-info">
           <h3>Habitación 03</h3>
-          <p>Cama doble con cabecera dorada y acabados cálidos. Un rincón tranquilo dentro de la casa para descansar.</p>
+          <p>Cama doble con acabados cálidos. Un rincón tranquilo dentro de la casa para descansar.</p>
           <div class="tags"><span class="tag">Cama doble</span><span class="tag">Ambiente cálido</span></div>
         </div>
       </article>
       <article class="room">
-        <img src="img/room-04-1000.webp" width="1000" height="1333"
+        <img src="img/room-bed-1200.webp" width="1200" height="1600"
              loading="lazy" decoding="async"
-             alt="Habitación con cama matrimonial y televisión">
+             alt="Habitación 04 de La Tesalia, cómoda para el descanso del grupo">
         <div class="room-info">
           <h3>Habitación 04</h3>
           <p>Habitación con cama matrimonial y televisión, cómoda para el descanso del grupo.</p>
@@ -687,6 +687,13 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     btn.setAttribute('aria-expanded', String(!expanded));
     btn.innerHTML = expanded ? 'Ver todas las amenidades <span aria-hidden="true">＋</span>' : 'Mostrar menos <span aria-hidden="true">−</span>';
   });
+})();
+// ---- Protección de imágenes: sin menú contextual ni arrastre ----
+(function(){
+  document.addEventListener('contextmenu', function(e){
+    if (e.target.closest('img')) e.preventDefault();
+  });
+  document.querySelectorAll('img').forEach(function(i){ i.draggable = false; });
 })();
 </script>
 
