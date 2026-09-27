@@ -10,7 +10,9 @@
 <meta property="og:description" content="Hospedaje privado y pasadía con piscina de doble nivel, jacuzzi y espacios diseñados para compartir.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/hero-pc-1448.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23151512'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23f4f1eb' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +48,8 @@ button{font:inherit;color:inherit}
 header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-mode:difference;color:#fff}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;min-height:44px}
-.brand-mark{width:36px;height:36px;flex:none;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-family:"Cormorant Garamond",serif;font-size:18px}
+.brand-mark{width:36px;height:36px;flex:none;display:grid;place-items:center;color:inherit}
+.brand-mark svg{display:block;width:100%;height:100%}
 .brand-text{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 .navlinks{display:flex;gap:clamp(16px,2.4vw,30px);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .navlinks a{opacity:.8;padding:12px 0;transition:opacity .3s}
@@ -322,7 +325,13 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
 <header>
   <div class="container nav">
     <a class="brand" href="#top" aria-label="La Tesalia Luxury P27 — inicio">
-      <span class="brand-mark" aria-hidden="true">L</span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30.8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <text x="32" y="41.5" text-anchor="middle" fill="currentColor"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="27" font-weight="500" letter-spacing="0.5">LT</text>
+        </svg>
+      </span>
       <span class="brand-text">La Tesalia · P27</span>
     </a>
     <nav class="navlinks" aria-label="Navegación principal">
