@@ -47,7 +47,9 @@ QUÉ SE ARREGLÓ
 ANTES DE PRODUCCIÓN
 -------------------
 1. Colocar el número de WhatsApp en WHATSAPP_NUMBER (index.html, script final).
-2. Confirmar habitaciones 3 y 4.
+2. Habitaciones 03 y 04 mostradas con descripción general basada en las
+   fotos; confirmar con el propietario las configuraciones exactas
+   (camas, baños) y actualizar los textos.
 3. Confirmar ubicación exacta (el mapa apunta a Sabanagrande, Atlántico).
 4. Confirmar condiciones exactas de hospedaje/pasadía.
 5. Subir index.html + carpeta img/ juntas al hosting.
