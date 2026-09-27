@@ -9,12 +9,13 @@
 <meta property="og:title" content="La Tesalia Luxury P27">
 <meta property="og:description" content="Hospedaje privado y pasadía con piscina de doble nivel, jacuzzi y espacios diseñados para compartir.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/hero-aerial-1600.webp">
+<meta property="og:image" content="img/hero-pc-1448.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23151512'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' fill='%23f4f1eb' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-aerial-1600.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-movil-760.webp" imagesrcset="img/hero-movil-760.webp 760w, img/hero-movil-1080.webp 1080w" imagesizes="100vw" media="(max-width:900px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-pc-1448.webp" imagesrcset="img/hero-pc-1080.webp 1080w, img/hero-pc-1448.webp 1448w" imagesizes="100vw" media="(min-width:901px)" fetchpriority="high">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -56,7 +57,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 /* ============ HERO ============ */
 .hero{height:100svh;min-height:600px;position:relative;overflow:hidden;background:#111;isolation:isolate}
 .hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 55%;filter:saturate(.92) contrast(1.03)}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.92) contrast(1.03)}
 @keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1)}}
 @media(prefers-reduced-motion:no-preference){.hero-media img{animation:heroZoom 1.6s var(--ease) both}}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.08) 26%,transparent 45%,rgba(0,0,0,.74))}
@@ -276,11 +277,17 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
 
 <section class="hero">
   <div class="hero-media">
-    <img src="img/hero-aerial-1600.webp"
-         srcset="img/hero-aerial-1080.webp 1080w, img/hero-aerial-1600.webp 1600w, img/hero-aerial-2400.webp 2400w"
-         sizes="100vw" width="2400" height="1800"
-         fetchpriority="high" decoding="async"
-         alt="Vista aérea de La Tesalia Luxury P27 con piscina, palapa y zonas sociales">
+    <picture>
+      <source media="(max-width:900px)"
+              srcset="img/hero-movil-760.webp 760w, img/hero-movil-1080.webp 1080w"
+              sizes="100vw">
+      <source media="(min-width:901px)"
+              srcset="img/hero-pc-1080.webp 1080w, img/hero-pc-1448.webp 1448w"
+              sizes="100vw">
+      <img src="img/hero-pc-1448.webp" width="1448" height="1086"
+           fetchpriority="high" decoding="async"
+           alt="La Tesalia Luxury P27: piscina, palapa y zonas sociales">
+    </picture>
   </div>
   <div class="container hero-content">
     <p class="eyebrow" style="color:#cfc8bd">Private stay · P27</p>
