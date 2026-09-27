@@ -747,12 +747,14 @@ function openWhatsApp(e){
       if (date < today){ b.disabled = true; }
       else {
         const k = key(date);
+        const kStart = state.start ? key(state.start) : null;
+        const kEnd   = state.end   ? key(state.end)   : null;
         if (state.mode === 'pass'){
           if (state.single && k === state.single) b.classList.add('sel');
         } else {
-          if (state.start && k === state.start) b.classList.add('sel');
-          if (state.end && k === state.end) b.classList.add('sel');
-          if (state.start && state.end && date > state.start && date < state.end) b.classList.add('range');
+          if (kStart && k === kStart) b.classList.add('sel');
+          if (kEnd && k === kEnd) b.classList.add('sel');
+          if (kStart && kEnd && date > state.start && date < state.end) b.classList.add('range');
         }
         if (date.getTime() === today.getTime()) b.classList.add('today');
       }
