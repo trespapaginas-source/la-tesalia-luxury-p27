@@ -91,7 +91,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 
 /* ============ FULL-BLEED ============ */
 .full-bleed{height:min(88vh,820px);min-height:520px;position:relative;overflow:hidden;background:#111}
-.full-bleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.88)}
+.fb-media{position:absolute;inset:0;overflow:hidden}
+.fb-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:saturate(.88)}
+@keyframes fbPan{from{transform:translateX(-5%) scale(1.14)}to{transform:translateX(5%) scale(1.14)}}
+@media(prefers-reduced-motion:no-preference){.full-bleed.panning img{animation:fbPan 55s ease-in-out infinite alternate}}
 .full-bleed:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6),transparent 62%)}
 .full-copy{position:absolute;z-index:2;left:max(var(--pad),calc((100% - 1240px)/2));top:50%;transform:translateY(-50%);color:#fff;max-width:560px;right:var(--pad)}
 .full-title{font-size:clamp(46px,7.5vw,116px);line-height:.86;letter-spacing:-.05em;font-weight:500;margin:14px 0 24px}
@@ -105,13 +108,16 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:clamp(36px,5vw,68px)}
 .section-title{font-size:clamp(42px,5.6vw,84px);line-height:.92;font-weight:500;letter-spacing:-.04em;margin:14px 0 0}
 .section-intro{max-width:360px;color:#6b665e;font-size:clamp(12.5px,.6vw,13.5px);line-height:1.8}
-.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.amenity-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 .amenity{min-height:158px;padding:26px 20px;border-bottom:1px solid var(--line)}
-.amenity:nth-child(3n+1),.amenity:nth-child(3n+2){border-right:1px solid var(--line)}
+.amenity:nth-child(4n+1),.amenity:nth-child(4n+2),.amenity:nth-child(4n+3){border-right:1px solid var(--line)}
+.amenity:nth-child(n+5){display:none}
+.amenity.opened{display:block}
 .amenity-num{font-size:10px;color:var(--stone);letter-spacing:.15em;font-weight:700}
 .amenity h3{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,2vw,31px);font-weight:500;margin:22px 0 8px}
 .amenity p{font-size:clamp(12px,.6vw,12.5px);color:#777168;margin:0;line-height:1.6}
-.amenity-more{display:none}
+.amenity-more{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;margin-top:20px;padding:15px;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;cursor:pointer;min-height:48px}
+.amenity-more span{font-size:16px;line-height:1}
 
 /* ============ GALLERY ============ */
 .gallery{padding:0 0 clamp(70px,10vw,150px)}
@@ -124,7 +130,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;mix-blend-m
 
 /* ============ ROOMS ============ */
 .rooms{padding:clamp(70px,10vw,145px) 0;background:#e6e0d7}
-.room-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,22px)}
+.rooms-carousel{position:relative}
+.room-layout{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;gap:0}
+.room-layout::-webkit-scrollbar{display:none}
+.room{flex:0 0 100%;min-width:100%;scroll-snap-align:start}
+.rc-nav{position:absolute;top:40%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(21,21,18,.25);background:rgba(245,241,234,.94);color:var(--ink);font-size:19px;line-height:1;cursor:pointer;display:none;place-items:center;z-index:5;transition:background .25s,color .25s}
+.rc-prev{left:12px}.rc-next{right:12px}
+.rc-nav:hover{background:var(--ink);color:#fff}
+.rc-counter{position:absolute;top:14px;right:16px;z-index:5;background:rgba(245,241,234,.92);border:1px solid var(--line);padding:6px 11px;font-size:10px;letter-spacing:.15em;font-weight:700}
+@media(hover:hover) and (min-width:901px){.rc-nav{display:grid}}
 .room{background:#f5f1ea;padding:clamp(12px,1.4vw,18px)}
 .rooms-note{margin:26px 0 0;font-size:12px;color:#8a8478;line-height:1.7;max-width:56ch}
 .room img{aspect-ratio:4/3.4;object-fit:cover}
@@ -259,28 +273,22 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   .intro-photo{width:100vw;margin-left:calc(50% - 50vw)}
   .intro-photo img{aspect-ratio:3912/1848}
   .full-bleed{height:auto;min-height:0}
-  .full-bleed img{position:static;aspect-ratio:4/4.6;object-position:center 38%}
-  .full-bleed:after{background:linear-gradient(180deg,rgba(0,0,0,.08) 20%,rgba(0,0,0,.78) 100%)}
-  .full-copy{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(26px,6vw,44px);top:auto;transform:none;max-width:none}
+  .fb-media{position:static}
+  .fb-media img{position:static;height:auto;aspect-ratio:2.35/1;object-position:center}
+  .full-bleed:after{display:none}
+  .full-copy{position:static;left:auto;right:auto;transform:none;max-width:none;padding:26px var(--pad) 34px}
   .full-title{font-size:clamp(42px,11.5vw,64px)}
   .spec-row{gap:16px 26px;margin-top:26px}
 
   .amenity-grid{grid-template-columns:1fr 1fr}
-  .amenity{min-height:0;padding:18px 14px}
-  .amenity:nth-child(3n+1),.amenity:nth-child(3n+2){border-right:0}
+  .amenity{min-height:0;padding:18px 14px;border-right:0}
   .amenity:nth-child(odd){border-right:1px solid var(--line)}
-  .amenity:nth-child(n+9){display:none}
-  .amenity.opened{display:block}
   .amenity h3{font-size:24px;margin:16px 0 5px}
-  .amenity-more{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;margin-top:20px;padding:15px;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;cursor:pointer;min-height:48px}
-  .amenity-more span{font-size:16px;line-height:1}
-
   .gallery-grid{grid-template-columns:1fr}
   .gallery-main img{aspect-ratio:4/3.2}
   .gallery-side{grid-template-rows:none;grid-template-columns:1fr 1fr}
   .gallery-side img{aspect-ratio:3/2}
 
-  .room-layout{grid-template-columns:1fr}
   .pass-photo img{aspect-ratio:4/3.4}
   .pass-grid > div:last-child{order:-1}
 
@@ -402,13 +410,15 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
 </section>
 
 <section class="full-bleed">
+  <div class="fb-media">
   <img src="img/agua-render-1536.webp"
        srcset="img/agua-render-1080.webp 1080w, img/agua-render-1536.webp 1536w"
        sizes="100vw" width="1536" height="1024"
        loading="lazy" decoding="async"
        alt="Piscina de doble nivel con zona de jacuzzi">
+  </div>
   <div class="full-copy reveal">
-    <p class="eyebrow" style="color:#d8d1c7">02 · Agua</p>
+    <p class="eyebrow" style="color:#d8d1c7">02 · Piscina</p>
     <h2 class="full-title serif">Dos niveles.<br><em>Una experiencia.</em></h2>
     <p>Una piscina amplia con zona de jacuzzi y diferentes niveles para pasar del descanso a la diversión en un mismo espacio.</p>
     <div class="spec-row">
@@ -438,6 +448,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
       <article class="amenity"><span class="amenity-num">10</span><h3>Parqueadero</h3><p>Capacidad para hasta 6 vehículos.</p></article>
       <article class="amenity"><span class="amenity-num">11</span><h3>Habitaciones</h3><p>4 habitaciones para la estadía del grupo.</p></article>
       <article class="amenity"><span class="amenity-num">12</span><h3>Baños</h3><p>Habitaciones con baño privado según configuración.</p></article>
+      <article class="amenity"><span class="amenity-num">13</span><h3>WiFi</h3><p>Conexión WiFi en toda la propiedad.</p></article>
     </div>
     <button class="amenity-more" type="button" aria-expanded="false" aria-controls="amenityGrid">Ver todas las amenidades <span aria-hidden="true">＋</span></button>
   </div>
@@ -482,6 +493,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
       <div><p class="eyebrow">05 · Descanso</p><h2 class="section-title serif">Espacios para<br><em>quedarte.</em></h2></div>
       <p class="section-intro">Configuraciones pensadas para alojar grupos y compartir la experiencia con comodidad.</p>
     </div>
+    <div class="rooms-carousel">
     <div class="room-layout r-group">
       <article class="room">
         <img src="img/room-bed-1200.webp" width="1200" height="1600"
@@ -523,6 +535,11 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
           <div class="tags"><span class="tag">Cama matrimonial</span><span class="tag">TV</span></div>
         </div>
       </article>
+    </div>
+    </div>
+    <button class="rc-nav rc-prev" id="roomPrev" type="button" aria-label="Habitación anterior">‹</button>
+    <button class="rc-nav rc-next" id="roomNext" type="button" aria-label="Habitación siguiente">›</button>
+    <div class="rc-counter" id="roomCounter" aria-live="polite">1 / 4</div>
     </div>
     <p class="rooms-note reveal">La distribución exacta de camas de las habitaciones 03 y 04 se comparte al confirmar tu reserva.</p>
   </div>
@@ -699,7 +716,7 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
   if (!btn) return;
   btn.addEventListener('click', function(){
     const expanded = btn.getAttribute('aria-expanded') === 'true';
-    document.querySelectorAll('.amenity:nth-child(n+9)').forEach(function(el){ el.classList.toggle('opened', !expanded); });
+    document.querySelectorAll('.amenity:nth-child(n+5)').forEach(function(el){ el.classList.toggle('opened', !expanded); });
     btn.setAttribute('aria-expanded', String(!expanded));
     btn.innerHTML = expanded ? 'Ver todas las amenidades <span aria-hidden="true">＋</span>' : 'Mostrar menos <span aria-hidden="true">−</span>';
   });
@@ -710,6 +727,32 @@ footer{background:#11110f;color:#77736b;border-top:1px solid rgba(255,255,255,.0
     if (e.target.closest('img')) e.preventDefault();
   });
   document.querySelectorAll('img').forEach(function(i){ i.draggable = false; });
+})();
+
+// ---- Paneo sutil de la sección Piscina ----
+(function(){
+  var fb = document.querySelector('.full-bleed');
+  if (!fb || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ en.isIntersecting ? fb.classList.add('panning') : fb.classList.remove('panning'); });
+  }, { threshold: 0.15 }).observe(fb);
+})();
+
+// ---- Carrusel de habitaciones (scroll interno con snap) ----
+(function(){
+  var track = document.querySelector('.room-layout');
+  if (!track) return;
+  var counter = document.getElementById('roomCounter');
+  var cards = track.children;
+  function update(){
+    var step = track.scrollWidth / cards.length;
+    var i = Math.min(cards.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
+    if (counter) counter.textContent = (i + 1) + ' / ' + cards.length;
+  }
+  track.addEventListener('scroll', function(){ window.requestAnimationFrame(update); }, { passive: true });
+  var prev = document.getElementById('roomPrev'), next = document.getElementById('roomNext');
+  if (prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function(){ track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); });
 })();
 
 // ---- Aparición al hacer scroll (slow motion, escalonado) ----
